@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>カードローン返済シミュレーター｜返済計画を簡単計算</title>
+    <meta name="description" content="カードローンの返済計画を簡単にシミュレーション。月々の返済額、総返済額、利息を瞬時に計算。元利均等・元金均等に対応。">
+    <meta name="keywords" content="カードローン,返済シミュレーター,返済計画,利息計算">
+
+    <!-- OGP Tags -->
+    <meta property="og:title" content="カードローン返済シミュレーター">
+    <meta property="og:description" content="返済計画を簡単シミュレーション">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="site-title">カードローン返済シミュレーター</h1>
+            <p class="site-description">返済計画を簡単シミュレーション</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <h2 class="section-title">借入条件を入力</h2>
+
+                <!-- 借入金額 -->
+                <div class="form-group">
+                    <label for="principal" class="form-label">
+                        借入金額
+                        <span class="label-value" id="principalValue">100,000円</span>
+                    </label>
+                    <input type="range" id="principal" class="form-range"
+                           min="10000" max="8000000" step="10000" value="100000">
+                    <div class="range-labels">
+                        <span>1万円</span>
+                        <span>800万円</span>
+                    </div>
+                </div>
+
+                <!-- 金利 -->
+                <div class="form-group">
+                    <label for="rate" class="form-label">
+                        金利(年率)
+                        <span class="label-value" id="rateValue">15.0%</span>
+                    </label>
+                    <input type="range" id="rate" class="form-range"
+                           min="1.0" max="20.0" step="0.1" value="15.0">
+                    <div class="range-labels">
+                        <span>1.0%</span>
+                        <span>20.0%</span>
+                    </div>
+                </div>
+
+                <!-- 返済方法 -->
+                <div class="form-group">
+                    <label class="form-label">返済方法</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="paymentType" value="equal" checked>
+                            <span class="radio-text">
+                                <strong>元利均等返済</strong>
+                                <small>毎月の返済額が一定</small>
+                            </span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="paymentType" value="principal">
+                            <span class="radio-text">
+                                <strong>元金均等返済</strong>
+                                <small>元金が毎月一定、利息は減少</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 返済期間/返済額切り替え -->
+                <div class="form-group">
+                    <div class="tab-group">
+                        <button class="tab-button active" data-tab="period">返済期間で計算</button>
+                        <button class="tab-button" data-tab="amount">返済額で計算</button>
+                    </div>
+
+                    <!-- 返済期間タブ -->
+                    <div class="tab-content active" id="periodTab">
+                        <label for="months" class="form-label">
+                            返済期間
+                            <span class="label-value" id="monthsValue">12ヶ月</span>
+                        </label>
+                        <input type="range" id="months" class="form-range"
+                               min="1" max="120" step="1" value="12">
+                        <div class="range-labels">
+                            <span>1ヶ月</span>
+                            <span>120ヶ月</span>
+                        </div>
+                    </div>
+
+                    <!-- 返済額タブ -->
+                    <div class="tab-content" id="amountTab">
+                        <label for="monthlyPayment" class="form-label">
+                            月々の返済額
+                            <span class="label-value" id="monthlyPaymentValue">10,000円</span>
+                        </label>
+                        <input type="range" id="monthlyPayment" class="form-range"
+                               min="10000" max="100000" step="1000" value="10000">
+                        <div class="range-labels">
+                            <span id="minPayment">最低返済額</span>
+                            <span>借入金額</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 計算ボタン -->
+                <button id="calculateBtn" class="btn btn-primary">計算する</button>
+            </section>
+
+            <!-- Result Section -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <!-- サマリーカード -->
+                <div class="summary-grid">
+                    <div class="summary-card card">
+                        <div class="summary-label">月々の返済額</div>
+                        <div class="summary-value" id="monthlyPaymentResult">-</div>
+                        <div class="summary-note" id="paymentNote"></div>
+                    </div>
+                    <div class="summary-card card">
+                        <div class="summary-label">返済期間</div>
+                        <div class="summary-value" id="periodResult">-</div>
+                    </div>
+                    <div class="summary-card card">
+                        <div class="summary-label">総返済額</div>
+                        <div class="summary-value" id="totalResult">-</div>
+                        <div class="summary-note" id="totalNote"></div>
+                    </div>
+                    <div class="summary-card card">
+                        <div class="summary-label">利息合計</div>
+                        <div class="summary-value" id="interestResult">-</div>
+                        <div class="summary-note" id="interestNote"></div>
+                    </div>
+                </div>
+
+                <!-- グラフ -->
+                <div class="chart-section card">
+                    <h3 class="section-title">返済推移グラフ</h3>
+                    <div class="chart-tabs">
+                        <button class="chart-tab active" data-chart="balance">残高推移</button>
+                        <button class="chart-tab" data-chart="breakdown">元金・利息内訳</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartCanvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- 返済スケジュール -->
+                <div class="schedule-section card">
+                    <h3 class="section-title">返済スケジュール</h3>
+                    <div class="table-responsive">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>回数</th>
+                                    <th>返済額</th>
+                                    <th>元金</th>
+                                    <th>利息</th>
+                                    <th>残高</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <button id="showAllBtn" class="btn btn-secondary" style="display: none;">すべて表示</button>
+                </div>
+            </section>
+
+            <!-- カードローン申込セクション -->
+            <section class="lender-section">
+                <h2 class="section-title">おすすめカードローン</h2>
+                <div class="lender-grid">
+                    <!-- アイフル -->
+                    <div class="lender-card card">
+                        <div class="lender-header">
+                            <h3 class="lender-name">アイフル</h3>
+                        </div>
+                        <div class="lender-info">
+                            <div class="info-row">
+                                <span class="info-label">金利</span>
+                                <span class="info-value">3.0%〜18.0%</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">限度額</span>
+                                <span class="info-value">最大800万円</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">審査時間</span>
+                                <span class="info-value">最短20分</span>
+                            </div>
+                        </div>
+                        <ul class="lender-features">
+                            <li>Web申込で最短20分融資</li>
+                            <li>初めての方なら最大30日間利息0円</li>
+                            <li>24時間365日即時振込可能</li>
+                        </ul>
+                        <a href="https://go5.link/215/1070/" class="btn btn-primary" rel="noopener noreferrer nofollow" target="_blank">
+                            公式サイトで申し込む
+                        </a>
+                    </div>
+
+                    <!-- アコム -->
+                    <div class="lender-card card">
+                        <div class="lender-header">
+                            <h3 class="lender-name">アコム</h3>
+                        </div>
+                        <div class="lender-info">
+                            <div class="info-row">
+                                <span class="info-label">金利</span>
+                                <span class="info-value">3.0%〜18.0%</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">限度額</span>
+                                <span class="info-value">最大800万円</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">審査時間</span>
+                                <span class="info-value">最短20分</span>
+                            </div>
+                        </div>
+                        <ul class="lender-features">
+                            <li>三菱UFJフィナンシャル・グループ</li>
+                            <li>初めての方なら最大30日間金利0円</li>
+                            <li>楽天銀行口座で24時間振込可能</li>
+                        </ul>
+                        <a href="https://provision.ikemen.ltd/157nq5aa6nb6bb04/cl/?bId=5819zqfd" class="btn btn-primary" rel="noopener noreferrer nofollow" target="_blank">
+                            公式サイトで申し込む
+                        </a>
+                    </div>
+
+                    <!-- プロミスVisa -->
+                    <div class="lender-card card">
+                        <div class="lender-header">
+                            <h3 class="lender-name">プロミスVisa</h3>
+                        </div>
+                        <div class="lender-info">
+                            <div class="info-row">
+                                <span class="info-label">金利</span>
+                                <span class="info-value">4.5%〜17.8%</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">限度額</span>
+                                <span class="info-value">最大500万円</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">審査時間</span>
+                                <span class="info-value">最短20分</span>
+                            </div>
+                        </div>
+                        <ul class="lender-features">
+                            <li>SMBCグループ</li>
+                            <li>初めての方なら30日間無利息</li>
+                            <li>アプリローンで手続き簡単</li>
+                        </ul>
+                        <a href="https://provision.ikemen.ltd/157nq5aa6nb6bb04/cl/?bId=6R10868a" class="btn btn-primary" rel="noopener noreferrer nofollow" target="_blank">
+                            公式サイトで申し込む
+                        </a>
+                    </div>
+
+                    <!-- SMBCモビット -->
+                    <div class="lender-card card">
+                        <div class="lender-header">
+                            <h3 class="lender-name">SMBCモビット</h3>
+                        </div>
+                        <div class="lender-info">
+                            <div class="info-row">
+                                <span class="info-label">金利</span>
+                                <span class="info-value">3.0%〜18.0%</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">限度額</span>
+                                <span class="info-value">最大800万円</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">審査時間</span>
+                                <span class="info-value">10秒簡易審査</span>
+                            </div>
+                        </div>
+                        <ul class="lender-features">
+                            <li>WEB完結申込で電話連絡なし</li>
+                            <li>Tポイントサービスあり</li>
+                            <li>三井住友カード提携</li>
+                        </ul>
+                        <a href="https://provision.ikemen.ltd/157nq5aa6nb6bb04/cl/?bId=f08915dQ" class="btn btn-primary" rel="noopener noreferrer nofollow" target="_blank">
+                            公式サイトで申し込む
+                        </a>
+                    </div>
+
+                    <!-- きらぼし銀行 -->
+                    <div class="lender-card card">
+                        <div class="lender-header">
+                            <h3 class="lender-name">きらぼし銀行</h3>
+                        </div>
+                        <div class="lender-info">
+                            <div class="info-row">
+                                <span class="info-label">金利</span>
+                                <span class="info-value">1.6%〜14.8%</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">限度額</span>
+                                <span class="info-value">最大1,000万円</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">審査時間</span>
+                                <span class="info-value">最短当日</span>
+                            </div>
+                        </div>
+                        <ul class="lender-features">
+                            <li>銀行カードローンの安心感</li>
+                            <li>低金利で大口融資に対応</li>
+                            <li>口座なしでも申込可能</li>
+                        </ul>
+                        <a href="https://provision.ikemen.ltd/157nq5aa6nb6bb04/cl/?bId=80617G04" class="btn btn-primary" rel="noopener noreferrer nofollow" target="_blank">
+                            公式サイトで申し込む
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 注意事項 -->
+                <div class="disclaimer card">
+                    <h4>ご利用は計画的に</h4>
+                    <ul>
+                        <li>お借入時の年齢が満20歳以上の方</li>
+                        <li>安定した収入と返済能力を有する方</li>
+                        <li>各社所定の基準を満たす方</li>
+                    </ul>
+                    <p class="disclaimer-note">
+                        ※ シミュレーション結果は概算です。実際の返済額とは異なる場合があります。<br>
+                        ※ 各カードローン会社の審査結果により、ご希望に添えない場合があります。<br>
+                        ※ 最新の情報は各社公式サイトでご確認ください。
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 カードローン返済シミュレーター</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/calculator.js"></script>
+    <script src="js/chart-handler.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

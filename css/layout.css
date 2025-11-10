@@ -1,0 +1,102 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-mobile);
+}
+
+/* Header */
+.header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.site-title {
+    font-size: var(--fs-h1-mobile);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.site-description {
+    font-size: var(--fs-small);
+    color: var(--color-secondary);
+    font-weight: 400;
+}
+
+/* Main Content */
+.main {
+    padding-bottom: var(--spacing-xxl);
+}
+
+/* Section */
+.input-section,
+.result-section,
+.lender-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: var(--fs-h2-mobile);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+    margin-top: var(--spacing-xxl);
+}
+
+.footer-text {
+    font-size: var(--fs-small);
+}
+
+/* Grid Layouts */
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.lender-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Utilities */
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
