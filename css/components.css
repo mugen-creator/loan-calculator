@@ -317,6 +317,14 @@
     border-bottom: 2px solid var(--color-border);
 }
 
+.lender-logo {
+    width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
 .lender-name {
     font-size: 20px;
     color: var(--color-primary);
