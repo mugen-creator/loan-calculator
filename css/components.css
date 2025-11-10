@@ -323,8 +323,9 @@
 
 .lender-logo {
     width: 100%;
-    max-height: 300px;
+    height: 200px;
     object-fit: contain;
+    object-position: center;
     margin: 0 auto var(--spacing-lg);
     display: block;
 }
