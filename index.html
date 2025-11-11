@@ -40,173 +40,10 @@
     <!-- Main Content -->
     <main class="main">
         <div class="container">
-            <!-- Simulation Type Tabs -->
-            <div class="sim-type-tabs">
-                <button class="sim-type-tab active" data-sim="single">単一借入</button>
-                <button class="sim-type-tab" data-sim="multiple">複数借入</button>
-            </div>
-
-            <!-- Single Loan Section -->
-            <div id="singleLoanSection" class="sim-section active">
-                <!-- Input Section -->
-                <section class="input-section card">
-                    <h2 class="section-title">借入条件を入力</h2>
-
-                <!-- 借入金額 -->
-                <div class="form-group">
-                    <label for="principal" class="form-label">
-                        借入金額
-                        <span class="label-value" id="principalValue">100,000円</span>
-                    </label>
-                    <input type="range" id="principal" class="form-range"
-                           min="10000" max="8000000" step="10000" value="100000">
-                    <div class="range-labels">
-                        <span>1万円</span>
-                        <span>800万円</span>
-                    </div>
-                </div>
-
-                <!-- 金利 -->
-                <div class="form-group">
-                    <label for="rate" class="form-label">
-                        金利(年率)
-                        <span class="label-value" id="rateValue">15.0%</span>
-                    </label>
-                    <input type="range" id="rate" class="form-range"
-                           min="1.0" max="20.0" step="0.1" value="15.0">
-                    <div class="range-labels">
-                        <span>1.0%</span>
-                        <span>20.0%</span>
-                    </div>
-                </div>
-
-                <!-- 返済方法 -->
-                <div class="form-group">
-                    <label class="form-label">返済方法</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="paymentType" value="equal" checked>
-                            <span class="radio-text">
-                                <strong>元利均等返済</strong>
-                                <small>毎月の返済額が一定</small>
-                            </span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="paymentType" value="principal">
-                            <span class="radio-text">
-                                <strong>元金均等返済</strong>
-                                <small>元金が毎月一定、利息は減少</small>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 返済期間/返済額切り替え -->
-                <div class="form-group">
-                    <div class="tab-group">
-                        <button class="tab-button active" data-tab="period">返済期間で計算</button>
-                        <button class="tab-button" data-tab="amount">返済額で計算</button>
-                    </div>
-
-                    <!-- 返済期間タブ -->
-                    <div class="tab-content active" id="periodTab">
-                        <label for="months" class="form-label">
-                            返済期間
-                            <span class="label-value" id="monthsValue">12ヶ月</span>
-                        </label>
-                        <input type="range" id="months" class="form-range"
-                               min="1" max="120" step="1" value="12">
-                        <div class="range-labels">
-                            <span>1ヶ月</span>
-                            <span>120ヶ月</span>
-                        </div>
-                    </div>
-
-                    <!-- 返済額タブ -->
-                    <div class="tab-content" id="amountTab">
-                        <label for="monthlyPayment" class="form-label">
-                            月々の返済額
-                            <span class="label-value" id="monthlyPaymentValue">10,000円</span>
-                        </label>
-                        <input type="range" id="monthlyPayment" class="form-range"
-                               min="10000" max="100000" step="1000" value="10000">
-                        <div class="range-labels">
-                            <span id="minPayment">最低返済額</span>
-                            <span>借入金額</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 計算ボタン -->
-                <button id="calculateBtn" class="btn btn-primary">計算する</button>
-            </section>
-
-            <!-- Result Section -->
-            <section class="result-section" id="resultSection" style="display: none;">
-                <!-- サマリーカード -->
-                <div class="summary-grid">
-                    <div class="summary-card card">
-                        <div class="summary-label">月々の返済額</div>
-                        <div class="summary-value" id="monthlyPaymentResult">-</div>
-                        <div class="summary-note" id="paymentNote"></div>
-                    </div>
-                    <div class="summary-card card">
-                        <div class="summary-label">返済期間</div>
-                        <div class="summary-value" id="periodResult">-</div>
-                    </div>
-                    <div class="summary-card card">
-                        <div class="summary-label">総返済額</div>
-                        <div class="summary-value" id="totalResult">-</div>
-                        <div class="summary-note" id="totalNote"></div>
-                    </div>
-                    <div class="summary-card card">
-                        <div class="summary-label">利息合計</div>
-                        <div class="summary-value" id="interestResult">-</div>
-                        <div class="summary-note" id="interestNote"></div>
-                    </div>
-                </div>
-
-                <!-- グラフ -->
-                <div class="chart-section card">
-                    <h3 class="section-title">返済推移グラフ</h3>
-                    <div class="chart-tabs">
-                        <button class="chart-tab active" data-chart="balance">残高推移</button>
-                        <button class="chart-tab" data-chart="breakdown">元金・利息内訳</button>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chartCanvas"></canvas>
-                    </div>
-                </div>
-
-                <!-- 返済スケジュール -->
-                <div class="schedule-section card">
-                    <h3 class="section-title">返済スケジュール</h3>
-                    <div class="table-responsive">
-                        <table class="schedule-table">
-                            <thead>
-                                <tr>
-                                    <th>回数</th>
-                                    <th>返済額</th>
-                                    <th>元金</th>
-                                    <th>利息</th>
-                                    <th>残高</th>
-                                </tr>
-                            </thead>
-                            <tbody id="scheduleTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <button id="showAllBtn" class="btn btn-secondary" style="display: none;">すべて表示</button>
-                </div>
-            </section>
-            </div>
-            <!-- End Single Loan Section -->
-
-            <!-- Multiple Loan Section -->
-            <div id="multipleLoanSection" class="sim-section">
                 <!-- Lender Selection -->
                 <section class="input-section card">
-                    <h2 class="section-title">今回借りるとしたらどれ?</h2>
+                    <h2 class="section-title">借入先を選択</h2>
+                    <p class="section-description">複数社を選んで、まとめて返済シミュレーション</p>
                     <div class="lender-selection">
                         <label class="lender-checkbox">
                             <input type="checkbox" value="aiful" data-name="アイフル" data-rate="15.0">
@@ -240,7 +77,9 @@
                 <div id="multipleLoanForms"></div>
 
                 <!-- Calculate Button -->
-                <button id="calculateMultipleBtn" class="btn btn-primary" style="margin-bottom: 32px;">まとめて計算する</button>
+                <div class="calculate-btn-wrapper">
+                    <button id="calculateMultipleBtn" class="btn btn-primary btn-large">返済シミュレーション実行</button>
+                </div>
 
                 <!-- Multiple Loan Results -->
                 <section id="multipleResultSection" style="display: none;">
@@ -287,19 +126,17 @@
 
                     <!-- Charts -->
                     <div class="chart-section card">
-                        <h3 class="section-title">複数借入グラフ</h3>
+                        <h3 class="section-title">返済状況グラフ</h3>
                         <div class="chart-tabs">
-                            <button class="chart-tab active" data-mchart="stacked">月々返済額推移</button>
-                            <button class="chart-tab" data-mchart="pie">借入金額内訳</button>
-                            <button class="chart-tab" data-mchart="balance">合計残高推移</button>
+                            <button class="chart-tab active" data-mchart="stacked">返済額</button>
+                            <button class="chart-tab" data-mchart="pie">借入内訳</button>
+                            <button class="chart-tab" data-mchart="balance">残高</button>
                         </div>
                         <div class="chart-container">
                             <canvas id="multipleChartCanvas"></canvas>
                         </div>
                     </div>
                 </section>
-            </div>
-            <!-- End Multiple Loan Section -->
 
             <!-- カードローン申込セクション -->
             <section class="lender-section">
@@ -322,11 +159,11 @@
                             </div>
                             <div class="info-row">
                                 <span class="info-label">審査時間</span>
-                                <span class="info-value">最短20分</span>
+                                <span class="info-value">最短18分</span>
                             </div>
                         </div>
                         <ul class="lender-features">
-                            <li>Web申込で最短20分融資</li>
+                            <li>Web申込で最短18分融資</li>
                             <li>初めての方なら最大30日間利息0円</li>
                             <li>24時間365日即時振込可能</li>
                         </ul>
@@ -378,7 +215,7 @@
                             </div>
                             <div class="info-row">
                                 <span class="info-label">限度額</span>
-                                <span class="info-value">最大500万円</span>
+                                <span class="info-value">最大800万円</span>
                             </div>
                             <div class="info-row">
                                 <span class="info-label">審査時間</span>

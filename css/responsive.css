@@ -21,12 +21,20 @@
         gap: var(--spacing-lg);
     }
 
+    .summary-value {
+        font-size: 36px;
+    }
+
     .lender-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .chart-container {
         height: 400px;
+    }
+
+    .chart-tab {
+        font-size: 16px;
     }
 
     .radio-group {
@@ -39,6 +47,11 @@
 
     .lender-selection {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lender-checkbox-logo {
+        width: 100px;
+        height: 60px;
     }
 
     #multipleLoanForms {

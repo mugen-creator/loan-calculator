@@ -6,42 +6,12 @@
     padding: var(--spacing-lg);
 }
 
-/* Simulation Type Tabs */
-.sim-type-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-xl);
-}
-
-.sim-type-tab {
-    padding: var(--spacing-md) var(--spacing-lg);
-    background-color: var(--color-bg);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-size: var(--fs-body);
-    font-weight: 600;
+/* Section Description */
+.section-description {
+    font-size: var(--fs-small);
     color: var(--color-secondary);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.sim-type-tab:hover {
-    border-color: var(--color-primary);
-}
-
-.sim-type-tab.active {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-white);
-}
-
-.sim-section {
-    display: none;
-}
-
-.sim-section.active {
-    display: block;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
 }
 
 /* Lender Selection */
@@ -54,39 +24,54 @@
 .lender-checkbox {
     display: flex;
     align-items: center;
-    padding: var(--spacing-md);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border: 3px solid var(--color-border);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     transition: var(--transition);
+    background-color: var(--color-white);
 }
 
 .lender-checkbox:hover {
     border-color: var(--color-primary);
-    background-color: rgba(44, 82, 130, 0.05);
+    background-color: rgba(44, 82, 130, 0.08);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .lender-checkbox input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     margin-right: var(--spacing-md);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .lender-checkbox-logo {
-    width: 60px;
-    height: 40px;
+    width: 80px;
+    height: 50px;
     object-fit: contain;
     margin-right: var(--spacing-md);
+    flex-shrink: 0;
 }
 
 .lender-checkbox span {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
+    font-size: var(--fs-body);
 }
 
 .lender-checkbox input[type="checkbox"]:checked ~ span {
     color: var(--color-primary);
+}
+
+.lender-checkbox input[type="checkbox"]:checked {
+    accent-color: var(--color-primary);
+}
+
+.lender-checkbox:has(input:checked) {
+    border-color: var(--color-primary);
+    background-color: rgba(44, 82, 130, 0.1);
 }
 
 /* Multiple Loan Forms */
@@ -99,37 +84,39 @@
 
 .multiple-loan-form {
     background-color: var(--color-white);
-    border: 2px solid var(--color-border);
+    border: 3px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
 }
 
 .multiple-loan-form.aiful {
-    border-left: 4px solid #E60012;
+    border-left: 5px solid #E60012;
 }
 
 .multiple-loan-form.acom {
-    border-left: 4px solid #00A7E1;
+    border-left: 5px solid #00A7E1;
 }
 
 .multiple-loan-form.promise {
-    border-left: 4px solid #00A040;
+    border-left: 5px solid #00A040;
 }
 
 .multiple-loan-form.mobit {
-    border-left: 4px solid #ED6103;
+    border-left: 5px solid #ED6103;
 }
 
 .multiple-loan-form.kiraboshi {
-    border-left: 4px solid #005BAC;
+    border-left: 5px solid #005BAC;
 }
 
 .multiple-loan-form h3 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     color: var(--color-primary);
     margin-bottom: var(--spacing-lg);
     font-weight: 700;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border);
 }
 
 /* Form Elements */
@@ -141,17 +128,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
-    margin-bottom: var(--spacing-sm);
-    font-size: var(--fs-body);
+    margin-bottom: var(--spacing-md);
+    font-size: 16px;
 }
 
 .label-value {
     font-family: var(--font-number);
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Range Slider */
@@ -289,6 +276,12 @@
     display: block;
 }
 
+/* Calculate Button Wrapper */
+.calculate-btn-wrapper {
+    margin: var(--spacing-xl) 0;
+    padding: 0 var(--spacing-md);
+}
+
 /* Buttons */
 .btn {
     display: block;
@@ -304,6 +297,13 @@
     transition: var(--transition);
 }
 
+.btn-large {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: var(--radius-lg);
+}
+
 .btn-primary {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -313,6 +313,10 @@
     background-color: var(--color-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }
 
 .btn-secondary {
@@ -329,20 +333,23 @@
 /* Summary Cards */
 .summary-card {
     text-align: center;
+    padding: var(--spacing-lg);
 }
 
 .summary-label {
-    font-size: var(--fs-small);
+    font-size: 14px;
     color: var(--color-secondary);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
 }
 
 .summary-value {
     font-family: var(--font-number);
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: var(--spacing-xs);
+    line-height: 1.2;
 }
 
 .summary-note {
@@ -358,24 +365,26 @@
 .chart-tabs {
     display: flex;
     gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 .chart-tab {
     flex: 1;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-sm);
     background-color: var(--color-bg);
     border: 2px solid var(--color-border);
     border-radius: var(--radius-md);
-    font-size: var(--fs-small);
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     color: var(--color-secondary);
     cursor: pointer;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .chart-tab:hover {
     border-color: var(--color-primary);
+    background-color: rgba(44, 82, 130, 0.05);
 }
 
 .chart-tab.active {
@@ -386,7 +395,7 @@
 
 .chart-container {
     position: relative;
-    height: 300px;
+    height: 350px;
     margin-bottom: var(--spacing-md);
 }
 

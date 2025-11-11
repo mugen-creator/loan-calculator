@@ -83,13 +83,6 @@ function setupEventListeners() {
         elements.monthlyPaymentValue.textContent = formatNumber(e.target.value) + '円';
     });
 
-    // シミュレーションタイプタブ切り替え
-    document.querySelectorAll('.sim-type-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            const simType = e.target.dataset.sim;
-            switchSimulationType(simType);
-        });
-    });
 
     // タブ切り替え
     elements.tabButtons.forEach(button => {
@@ -136,29 +129,6 @@ function updateMinPayment() {
     if (parseInt(elements.monthlyPayment.value) < minPayment) {
         elements.monthlyPayment.value = minPayment;
         elements.monthlyPaymentValue.textContent = formatNumber(minPayment) + '円';
-    }
-}
-
-function switchSimulationType(simType) {
-    // タブのアクティブ状態を切り替え
-    document.querySelectorAll('.sim-type-tab').forEach(tab => {
-        if (tab.dataset.sim === simType) {
-            tab.classList.add('active');
-        } else {
-            tab.classList.remove('active');
-        }
-    });
-
-    // セクションの表示切り替え
-    const singleSection = document.getElementById('singleLoanSection');
-    const multipleSection = document.getElementById('multipleLoanSection');
-
-    if (simType === 'single') {
-        singleSection.classList.add('active');
-        multipleSection.classList.remove('active');
-    } else {
-        singleSection.classList.remove('active');
-        multipleSection.classList.add('active');
     }
 }
 
