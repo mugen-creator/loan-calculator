@@ -73,7 +73,7 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
                     <span class="label-value" id="${lenderId}-principalValue">10万円</span>
                 </label>
                 <input type="range" id="${lenderId}-principal" class="form-range"
-                       min="10000" max="2000000" step="10000" value="100000">
+                       min="10000" max="2000000" step="50000" value="100000">
                 <div class="range-labels">
                     <span>1万円</span>
                     <span>200万円</span>
@@ -86,7 +86,7 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
                     <span class="label-value" id="${lenderId}-rateValue">${defaultRate.toFixed(1)}%</span>
                 </label>
                 <input type="range" id="${lenderId}-rate" class="form-range"
-                       min="1.0" max="20.0" step="0.1" value="${defaultRate}">
+                       min="1.0" max="20.0" step="0.5" value="${defaultRate}">
                 <div class="range-labels">
                     <span>1.0%</span>
                     <span>20.0%</span>
@@ -99,9 +99,9 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
                     <span class="label-value" id="${lenderId}-monthsValue">12ヶ月</span>
                 </label>
                 <input type="range" id="${lenderId}-months" class="form-range"
-                       min="1" max="120" step="1" value="12">
+                       min="6" max="120" step="6" value="12">
                 <div class="range-labels">
-                    <span>1ヶ月</span>
+                    <span>6ヶ月</span>
                     <span>120ヶ月</span>
                 </div>
             </div>
