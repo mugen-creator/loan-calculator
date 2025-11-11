@@ -300,7 +300,51 @@
 
 /* Calculate Button Wrapper */
 .calculate-btn-wrapper {
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(44, 82, 130, 0.05) 0%, rgba(49, 130, 206, 0.05) 100%);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--color-primary);
+    text-align: center;
+}
+
+/* Calculate Instruction */
+.calculate-instruction {
+    margin-bottom: var(--spacing-md);
+}
+
+.instruction-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+}
+
+.instruction-arrow {
+    font-size: 32px;
+    color: var(--color-primary);
+    animation: bounce 2s ease-in-out infinite;
+    margin: var(--spacing-xs) 0;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.calculate-note {
+    font-size: var(--fs-small);
+    color: var(--color-secondary);
+    margin-top: var(--spacing-sm);
+    font-weight: 500;
 }
 
 /* Buttons */
@@ -323,6 +367,51 @@
     font-size: 16px;
     font-weight: 700;
     border-radius: var(--radius-lg);
+}
+
+.btn-calculate {
+    position: relative;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: 18px;
+    box-shadow: 0 8px 16px rgba(44, 82, 130, 0.3);
+    animation: pulse 2.5s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    min-height: 64px;
+}
+
+.btn-calculate .btn-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.btn-calculate .btn-text {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 16px rgba(44, 82, 130, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 12px 24px rgba(44, 82, 130, 0.4);
+        transform: scale(1.02);
+    }
+}
+
+.btn-calculate:hover {
+    animation: none;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(44, 82, 130, 0.4);
+}
+
+.btn-calculate:active {
+    transform: translateY(-1px) scale(1.01);
 }
 
 .btn-primary {

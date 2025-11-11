@@ -4,6 +4,32 @@
         padding: 0 var(--container-padding-desktop);
     }
 
+    .calculate-btn-wrapper {
+        padding: var(--spacing-xl);
+    }
+
+    .instruction-text {
+        font-size: 16px;
+    }
+
+    .instruction-arrow {
+        font-size: 40px;
+    }
+
+    .btn-calculate {
+        padding: var(--spacing-xl) var(--spacing-xxl);
+        font-size: 20px;
+        min-height: 72px;
+    }
+
+    .btn-calculate .btn-icon {
+        font-size: 28px;
+    }
+
+    .btn-calculate .btn-text {
+        font-size: 20px;
+    }
+
     .header {
         padding: var(--spacing-lg) 0;
         margin-bottom: var(--spacing-xl);

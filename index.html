@@ -46,27 +46,27 @@
                     <p class="section-description">複数の会社を選んで、まとめて返済計画を確認できます</p>
                     <div class="lender-selection">
                         <label class="lender-checkbox">
-                            <input type="checkbox" value="aiful" data-name="アイフル" data-rate="15.0">
+                            <input type="checkbox" value="aiful" data-name="アイフル" data-rate="18.0">
                             <img src="アイフル.png" alt="アイフル" class="lender-checkbox-logo">
                             <span>アイフル</span>
                         </label>
                         <label class="lender-checkbox">
-                            <input type="checkbox" value="acom" data-name="アコム" data-rate="15.0">
+                            <input type="checkbox" value="acom" data-name="アコム" data-rate="18.0">
                             <img src="アコム.png" alt="アコム" class="lender-checkbox-logo">
                             <span>アコム</span>
                         </label>
                         <label class="lender-checkbox">
-                            <input type="checkbox" value="promise" data-name="プロミスVisa" data-rate="15.0">
+                            <input type="checkbox" value="promise" data-name="プロミスVisa" data-rate="17.8">
                             <img src="プロミスVisa.jpg" alt="プロミスVisa" class="lender-checkbox-logo">
                             <span>プロミスVisa</span>
                         </label>
                         <label class="lender-checkbox">
-                            <input type="checkbox" value="mobit" data-name="SMBCモビット" data-rate="15.0">
+                            <input type="checkbox" value="mobit" data-name="SMBCモビット" data-rate="18.0">
                             <img src="モビット.jpg" alt="SMBCモビット" class="lender-checkbox-logo">
                             <span>SMBCモビット</span>
                         </label>
                         <label class="lender-checkbox">
-                            <input type="checkbox" value="kiraboshi" data-name="きらぼし銀行" data-rate="10.0">
+                            <input type="checkbox" value="kiraboshi" data-name="きらぼし銀行" data-rate="14.8">
                             <img src="きらぼし銀行.png" alt="きらぼし銀行" class="lender-checkbox-logo">
                             <span>きらぼし銀行</span>
                         </label>
@@ -78,7 +78,15 @@
 
                 <!-- Calculate Button -->
                 <div class="calculate-btn-wrapper">
-                    <button id="calculateMultipleBtn" class="btn btn-primary btn-large">返済シミュレーション実行</button>
+                    <div class="calculate-instruction">
+                        <p class="instruction-text">入力が完了したら、下のボタンを押してください</p>
+                        <div class="instruction-arrow">↓</div>
+                    </div>
+                    <button id="calculateMultipleBtn" class="btn btn-primary btn-large btn-calculate">
+                        <span class="btn-icon">📊</span>
+                        <span class="btn-text">返済計画を計算する</span>
+                    </button>
+                    <p class="calculate-note">※ 数秒で結果が表示されます</p>
                 </div>
 
                 <!-- Multiple Loan Results -->
