@@ -5,28 +5,40 @@
     }
 
     .header {
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-xl);
     }
 
     .site-title {
         font-size: var(--fs-h1-desktop);
+        margin-bottom: var(--spacing-xs);
     }
 
     .section-title {
         font-size: var(--fs-h2-desktop);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .card {
+        padding: var(--spacing-lg);
     }
 
     .summary-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
 
     .summary-value {
         font-size: 36px;
     }
 
+    .summary-card {
+        padding: var(--spacing-lg);
+    }
+
     .lender-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
     }
 
     .chart-container {
@@ -35,6 +47,10 @@
 
     .chart-tab {
         font-size: 16px;
+    }
+
+    .chart-section {
+        margin-bottom: var(--spacing-lg);
     }
 
     .radio-group {
@@ -47,6 +63,11 @@
 
     .lender-selection {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .lender-checkbox {
+        padding: var(--spacing-md);
     }
 
     .lender-checkbox-logo {
@@ -56,6 +77,25 @@
 
     #multipleLoanForms {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .multiple-loan-form {
+        padding: var(--spacing-lg);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .input-section {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .result-section,
+    .lender-section {
+        margin-bottom: var(--spacing-xl);
     }
 }
 

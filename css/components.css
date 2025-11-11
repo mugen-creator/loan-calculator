@@ -3,14 +3,14 @@
     background-color: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
 }
 
 /* Section Description */
 .section-description {
     font-size: var(--fs-small);
     color: var(--color-secondary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     text-align: center;
 }
 
@@ -18,7 +18,7 @@
 .lender-selection {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 .lender-checkbox {
@@ -78,15 +78,15 @@
 #multipleLoanForms {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 .multiple-loan-form {
     background-color: var(--color-white);
     border: 3px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
     box-shadow: var(--shadow-md);
 }
 
@@ -111,17 +111,17 @@
 }
 
 .multiple-loan-form h3 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     font-weight: 700;
-    padding-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
     border-bottom: 2px solid var(--color-border);
 }
 
 /* Form Elements */
 .form-group {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .form-label {
@@ -278,8 +278,7 @@
 
 /* Calculate Button Wrapper */
 .calculate-btn-wrapper {
-    margin: var(--spacing-xl) 0;
-    padding: 0 var(--spacing-md);
+    margin: var(--spacing-lg) 0;
 }
 
 /* Buttons */
@@ -333,7 +332,7 @@
 /* Summary Cards */
 .summary-card {
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
 }
 
 .summary-label {
@@ -359,7 +358,7 @@
 
 /* Chart Section */
 .chart-section {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: 0;
 }
 
 .chart-tabs {
