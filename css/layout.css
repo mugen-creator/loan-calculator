@@ -65,6 +65,11 @@ body {
     font-weight: 700;
 }
 
+/* Lender Section */
+.lender-section {
+    margin-top: var(--spacing-xl);
+}
+
 /* Footer */
 .footer {
     background-color: var(--color-primary);

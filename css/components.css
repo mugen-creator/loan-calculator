@@ -24,9 +24,9 @@
 .lender-checkbox {
     display: flex;
     align-items: center;
-    padding: var(--spacing-lg);
-    border: 3px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: var(--transition);
     background-color: var(--color-white);
@@ -40,25 +40,25 @@
 }
 
 .lender-checkbox input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    margin-right: var(--spacing-md);
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm);
     cursor: pointer;
     flex-shrink: 0;
 }
 
 .lender-checkbox-logo {
-    width: 80px;
-    height: 50px;
+    width: 70px;
+    height: 45px;
     object-fit: contain;
-    margin-right: var(--spacing-md);
+    margin-right: var(--spacing-sm);
     flex-shrink: 0;
 }
 
 .lender-checkbox span {
     font-weight: 700;
     color: var(--color-text);
-    font-size: var(--fs-body);
+    font-size: 15px;
 }
 
 .lender-checkbox input[type="checkbox"]:checked ~ span {
@@ -131,14 +131,14 @@
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .label-value {
     font-family: var(--font-number);
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 /* Range Slider */
@@ -297,8 +297,8 @@
 }
 
 .btn-large {
-    padding: var(--spacing-lg) var(--spacing-xl);
-    font-size: 18px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 16px;
     font-weight: 700;
     border-radius: var(--radius-lg);
 }
@@ -344,7 +344,7 @@
 
 .summary-value {
     font-family: var(--font-number);
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: var(--spacing-xs);
@@ -396,6 +396,73 @@
     position: relative;
     height: 350px;
     margin-bottom: var(--spacing-md);
+}
+
+/* Breakdown Section */
+.breakdown-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Breakdown Cards (Mobile) */
+.breakdown-cards {
+    display: block;
+}
+
+.breakdown-card {
+    background-color: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.breakdown-card:last-child {
+    margin-bottom: 0;
+}
+
+.breakdown-card-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.breakdown-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xs) 0;
+}
+
+.breakdown-label {
+    font-size: 13px;
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+.breakdown-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    font-family: var(--font-number);
+}
+
+.breakdown-value.highlight {
+    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* Breakdown Table (Desktop) */
+.breakdown-table {
+    display: none;
 }
 
 /* Schedule Table */

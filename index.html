@@ -42,8 +42,8 @@
         <div class="container">
                 <!-- Lender Selection -->
                 <section class="input-section card">
-                    <h2 class="section-title">借入先を選択</h2>
-                    <p class="section-description">複数社を選んで、まとめて返済シミュレーション</p>
+                    <h2 class="section-title">借入先を選んでください</h2>
+                    <p class="section-description">複数の会社を選んで、まとめて返済計画を確認できます</p>
                     <div class="lender-selection">
                         <label class="lender-checkbox">
                             <input type="checkbox" value="aiful" data-name="アイフル" data-rate="15.0">
@@ -104,9 +104,12 @@
                     </div>
 
                     <!-- Company Breakdown -->
-                    <div class="card" style="margin-bottom: 32px;">
+                    <div class="card breakdown-section">
                         <h3 class="section-title">会社別内訳</h3>
-                        <div class="table-responsive">
+                        <!-- Mobile Card View -->
+                        <div id="multipleBreakdownCards" class="breakdown-cards"></div>
+                        <!-- Desktop Table View -->
+                        <div class="table-responsive breakdown-table">
                             <table class="schedule-table">
                                 <thead>
                                     <tr>

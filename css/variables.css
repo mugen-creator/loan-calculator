@@ -17,12 +17,12 @@
     --font-number: 'Roboto', 'Noto Sans JP', sans-serif;
 
     /* Font Sizes */
-    --fs-h1-mobile: 24px;
+    --fs-h1-mobile: 22px;
     --fs-h1-desktop: 32px;
-    --fs-h2-mobile: 20px;
+    --fs-h2-mobile: 18px;
     --fs-h2-desktop: 24px;
-    --fs-body: 16px;
-    --fs-small: 14px;
+    --fs-body: 15px;
+    --fs-small: 13px;
     --fs-note: 12px;
 
     /* Spacing */

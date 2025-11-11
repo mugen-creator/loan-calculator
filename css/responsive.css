@@ -29,7 +29,16 @@
     }
 
     .summary-value {
-        font-size: 36px;
+        font-size: 32px;
+    }
+
+    .label-value {
+        font-size: 20px;
+    }
+
+    .btn-large {
+        padding: var(--spacing-lg) var(--spacing-xl);
+        font-size: 18px;
     }
 
     .summary-card {
@@ -96,6 +105,19 @@
     .result-section,
     .lender-section {
         margin-bottom: var(--spacing-xl);
+    }
+
+    .lender-section {
+        margin-top: var(--spacing-xxl);
+    }
+
+    /* Show table, hide cards on tablet+ */
+    .breakdown-cards {
+        display: none;
+    }
+
+    .breakdown-table {
+        display: block;
     }
 }
 

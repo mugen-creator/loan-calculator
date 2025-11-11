@@ -20,6 +20,7 @@ const multipleElements = {
     multipleTotalPayment: document.getElementById('multipleTotalPayment'),
     multipleInterestTotal: document.getElementById('multipleInterestTotal'),
     multipleBreakdownBody: document.getElementById('multipleBreakdownBody'),
+    multipleBreakdownCards: document.getElementById('multipleBreakdownCards'),
 
     // グラフ
     multipleChartTabs: document.querySelectorAll('[data-mchart]')
@@ -69,13 +70,13 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
             <div class="form-group">
                 <label for="${lenderId}-principal" class="form-label">
                     借入金額
-                    <span class="label-value" id="${lenderId}-principalValue">100,000円</span>
+                    <span class="label-value" id="${lenderId}-principalValue">10万円</span>
                 </label>
                 <input type="range" id="${lenderId}-principal" class="form-range"
-                       min="10000" max="8000000" step="10000" value="100000">
+                       min="10000" max="2000000" step="10000" value="100000">
                 <div class="range-labels">
                     <span>1万円</span>
-                    <span>800万円</span>
+                    <span>200万円</span>
                 </div>
             </div>
 
@@ -198,9 +199,8 @@ function displayMultipleResults() {
     multipleElements.multipleTotalPayment.textContent = formatNumber(totalPayment) + '円';
     multipleElements.multipleInterestTotal.textContent = formatNumber(interestTotal) + '円';
 
-    // 会社別内訳表示
+    // 会社別内訳表示（テーブル）
     multipleElements.multipleBreakdownBody.innerHTML = '';
-
     multipleLoanResults.forEach(result => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -212,6 +212,39 @@ function displayMultipleResults() {
             <td>${formatNumber(result.totalInterest)}円</td>
         `;
         multipleElements.multipleBreakdownBody.appendChild(row);
+    });
+
+    // 会社別内訳表示（モバイルカード）
+    multipleElements.multipleBreakdownCards.innerHTML = '';
+    multipleLoanResults.forEach(result => {
+        const card = document.createElement('div');
+        card.className = 'breakdown-card';
+        card.innerHTML = `
+            <div class="breakdown-card-header">${result.name}</div>
+            <div class="breakdown-card-body">
+                <div class="breakdown-item">
+                    <span class="breakdown-label">借入金額</span>
+                    <span class="breakdown-value">${formatNumber(result.principal)}円</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">月々返済額</span>
+                    <span class="breakdown-value highlight">${formatNumber(result.monthlyPayment)}円</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">返済期間</span>
+                    <span class="breakdown-value">${formatPeriod(result.months)}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">総返済額</span>
+                    <span class="breakdown-value">${formatNumber(result.totalPayment)}円</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">利息</span>
+                    <span class="breakdown-value">${formatNumber(result.totalInterest)}円</span>
+                </div>
+            </div>
+        `;
+        multipleElements.multipleBreakdownCards.appendChild(card);
     });
 }
 
