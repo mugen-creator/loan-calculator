@@ -6,6 +6,132 @@
     padding: var(--spacing-lg);
 }
 
+/* Simulation Type Tabs */
+.sim-type-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.sim-type-tab {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sim-type-tab:hover {
+    border-color: var(--color-primary);
+}
+
+.sim-type-tab.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.sim-section {
+    display: none;
+}
+
+.sim-section.active {
+    display: block;
+}
+
+/* Lender Selection */
+.lender-selection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.lender-checkbox {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lender-checkbox:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(44, 82, 130, 0.05);
+}
+
+.lender-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-md);
+    cursor: pointer;
+}
+
+.lender-checkbox-logo {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: var(--spacing-md);
+}
+
+.lender-checkbox span {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.lender-checkbox input[type="checkbox"]:checked ~ span {
+    color: var(--color-primary);
+}
+
+/* Multiple Loan Forms */
+#multipleLoanForms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.multiple-loan-form {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.multiple-loan-form.aiful {
+    border-left: 4px solid #E60012;
+}
+
+.multiple-loan-form.acom {
+    border-left: 4px solid #00A7E1;
+}
+
+.multiple-loan-form.promise {
+    border-left: 4px solid #00A040;
+}
+
+.multiple-loan-form.mobit {
+    border-left: 4px solid #ED6103;
+}
+
+.multiple-loan-form.kiraboshi {
+    border-left: 4px solid #005BAC;
+}
+
+.multiple-loan-form h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
 /* Form Elements */
 .form-group {
     margin-bottom: var(--spacing-xl);

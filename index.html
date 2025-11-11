@@ -40,9 +40,17 @@
     <!-- Main Content -->
     <main class="main">
         <div class="container">
-            <!-- Input Section -->
-            <section class="input-section card">
-                <h2 class="section-title">借入条件を入力</h2>
+            <!-- Simulation Type Tabs -->
+            <div class="sim-type-tabs">
+                <button class="sim-type-tab active" data-sim="single">単一借入</button>
+                <button class="sim-type-tab" data-sim="multiple">複数借入</button>
+            </div>
+
+            <!-- Single Loan Section -->
+            <div id="singleLoanSection" class="sim-section active">
+                <!-- Input Section -->
+                <section class="input-section card">
+                    <h2 class="section-title">借入条件を入力</h2>
 
                 <!-- 借入金額 -->
                 <div class="form-group">
@@ -191,6 +199,107 @@
                     <button id="showAllBtn" class="btn btn-secondary" style="display: none;">すべて表示</button>
                 </div>
             </section>
+            </div>
+            <!-- End Single Loan Section -->
+
+            <!-- Multiple Loan Section -->
+            <div id="multipleLoanSection" class="sim-section">
+                <!-- Lender Selection -->
+                <section class="input-section card">
+                    <h2 class="section-title">今回借りるとしたらどれ?</h2>
+                    <div class="lender-selection">
+                        <label class="lender-checkbox">
+                            <input type="checkbox" value="aiful" data-name="アイフル" data-rate="15.0">
+                            <img src="アイフル.png" alt="アイフル" class="lender-checkbox-logo">
+                            <span>アイフル</span>
+                        </label>
+                        <label class="lender-checkbox">
+                            <input type="checkbox" value="acom" data-name="アコム" data-rate="15.0">
+                            <img src="アコム.png" alt="アコム" class="lender-checkbox-logo">
+                            <span>アコム</span>
+                        </label>
+                        <label class="lender-checkbox">
+                            <input type="checkbox" value="promise" data-name="プロミスVisa" data-rate="15.0">
+                            <img src="プロミスVisa.jpg" alt="プロミスVisa" class="lender-checkbox-logo">
+                            <span>プロミスVisa</span>
+                        </label>
+                        <label class="lender-checkbox">
+                            <input type="checkbox" value="mobit" data-name="SMBCモビット" data-rate="15.0">
+                            <img src="モビット.jpg" alt="SMBCモビット" class="lender-checkbox-logo">
+                            <span>SMBCモビット</span>
+                        </label>
+                        <label class="lender-checkbox">
+                            <input type="checkbox" value="kiraboshi" data-name="きらぼし銀行" data-rate="10.0">
+                            <img src="きらぼし銀行.png" alt="きらぼし銀行" class="lender-checkbox-logo">
+                            <span>きらぼし銀行</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Dynamic Input Forms Container -->
+                <div id="multipleLoanForms"></div>
+
+                <!-- Calculate Button -->
+                <button id="calculateMultipleBtn" class="btn btn-primary" style="margin-bottom: 32px;">まとめて計算する</button>
+
+                <!-- Multiple Loan Results -->
+                <section id="multipleResultSection" style="display: none;">
+                    <!-- Summary -->
+                    <div class="summary-grid">
+                        <div class="summary-card card">
+                            <div class="summary-label">月々の返済額合計</div>
+                            <div class="summary-value" id="multipleMonthlyTotal">-</div>
+                        </div>
+                        <div class="summary-card card">
+                            <div class="summary-label">総借入金額</div>
+                            <div class="summary-value" id="multiplePrincipalTotal">-</div>
+                        </div>
+                        <div class="summary-card card">
+                            <div class="summary-label">総返済額</div>
+                            <div class="summary-value" id="multipleTotalPayment">-</div>
+                        </div>
+                        <div class="summary-card card">
+                            <div class="summary-label">利息合計</div>
+                            <div class="summary-value" id="multipleInterestTotal">-</div>
+                        </div>
+                    </div>
+
+                    <!-- Company Breakdown -->
+                    <div class="card" style="margin-bottom: 32px;">
+                        <h3 class="section-title">会社別内訳</h3>
+                        <div class="table-responsive">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>会社名</th>
+                                        <th>借入金額</th>
+                                        <th>月々返済額</th>
+                                        <th>返済期間</th>
+                                        <th>総返済額</th>
+                                        <th>利息</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="multipleBreakdownBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="chart-section card">
+                        <h3 class="section-title">複数借入グラフ</h3>
+                        <div class="chart-tabs">
+                            <button class="chart-tab active" data-mchart="stacked">月々返済額推移</button>
+                            <button class="chart-tab" data-mchart="pie">借入金額内訳</button>
+                            <button class="chart-tab" data-mchart="balance">合計残高推移</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="multipleChartCanvas"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- End Multiple Loan Section -->
 
             <!-- カードローン申込セクション -->
             <section class="lender-section">
@@ -376,5 +485,6 @@
     <script src="js/calculator.js"></script>
     <script src="js/chart-handler.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/multiple-loan.js"></script>
 </body>
 </html>

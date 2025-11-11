@@ -36,6 +36,14 @@
     .radio-label {
         flex: 1;
     }
+
+    .lender-selection {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #multipleLoanForms {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Desktop (1024px and up) */
