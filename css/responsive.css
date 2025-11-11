@@ -50,6 +50,41 @@
         gap: var(--spacing-lg);
     }
 
+    .lender-card {
+        min-height: 600px;
+    }
+
+    .lender-logo {
+        height: 200px;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .lender-name {
+        font-size: 18px;
+    }
+
+    .lender-header {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+    }
+
+    .lender-info {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .info-label {
+        font-size: var(--fs-small);
+    }
+
+    .info-value {
+        font-size: 14px;
+    }
+
+    .lender-features li {
+        font-size: var(--fs-small);
+        margin-bottom: var(--spacing-xs);
+    }
+
     .chart-container {
         height: 400px;
     }
@@ -129,6 +164,18 @@
 
     .lender-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lender-card {
+        min-height: 700px;
+    }
+
+    .lender-logo {
+        height: 250px;
+    }
+
+    .lender-name {
+        font-size: 20px;
     }
 
     .summary-value {
