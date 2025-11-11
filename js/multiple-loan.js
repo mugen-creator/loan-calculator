@@ -70,39 +70,45 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
             <div class="form-group">
                 <label for="${lenderId}-principal" class="form-label">
                     借入金額
-                    <span class="label-value" id="${lenderId}-principalValue">10万円</span>
                 </label>
-                <input type="range" id="${lenderId}-principal" class="form-range"
-                       min="10000" max="2000000" step="50000" value="100000">
-                <div class="range-labels">
-                    <span>1万円</span>
-                    <span>200万円</span>
+                <div class="input-with-unit">
+                    <input type="number" id="${lenderId}-principal" class="form-input"
+                           min="10000" max="2000000" step="10000" value="100000">
+                    <span class="input-unit">円</span>
+                </div>
+                <div class="quick-amounts">
+                    <button type="button" class="quick-btn" data-amount="100000">10万</button>
+                    <button type="button" class="quick-btn" data-amount="300000">30万</button>
+                    <button type="button" class="quick-btn" data-amount="500000">50万</button>
+                    <button type="button" class="quick-btn" data-amount="1000000">100万</button>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="${lenderId}-rate" class="form-label">
                     金利(年率)
-                    <span class="label-value" id="${lenderId}-rateValue">${defaultRate.toFixed(1)}%</span>
                 </label>
-                <input type="range" id="${lenderId}-rate" class="form-range"
-                       min="1.0" max="20.0" step="0.5" value="${defaultRate}">
-                <div class="range-labels">
-                    <span>1.0%</span>
-                    <span>20.0%</span>
+                <div class="input-with-unit">
+                    <input type="number" id="${lenderId}-rate" class="form-input"
+                           min="1.0" max="20.0" step="0.1" value="${defaultRate}">
+                    <span class="input-unit">%</span>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="${lenderId}-months" class="form-label">
                     返済期間
-                    <span class="label-value" id="${lenderId}-monthsValue">12ヶ月</span>
                 </label>
-                <input type="range" id="${lenderId}-months" class="form-range"
-                       min="6" max="120" step="6" value="12">
-                <div class="range-labels">
-                    <span>6ヶ月</span>
-                    <span>120ヶ月</span>
+                <div class="input-with-unit">
+                    <input type="number" id="${lenderId}-months" class="form-input"
+                           min="1" max="120" step="1" value="12">
+                    <span class="input-unit">ヶ月</span>
+                </div>
+                <div class="quick-amounts">
+                    <button type="button" class="quick-btn" data-months="12">1年</button>
+                    <button type="button" class="quick-btn" data-months="24">2年</button>
+                    <button type="button" class="quick-btn" data-months="36">3年</button>
+                    <button type="button" class="quick-btn" data-months="60">5年</button>
                 </div>
             </div>
         </div>
@@ -111,20 +117,23 @@ function addLenderForm(lenderId, lenderName, defaultRate) {
     multipleElements.multipleLoanForms.insertAdjacentHTML('beforeend', formHTML);
 
     // イベントリスナーを追加
-    const principalInput = document.getElementById(`${lenderId}-principal`);
-    const rateInput = document.getElementById(`${lenderId}-rate`);
-    const monthsInput = document.getElementById(`${lenderId}-months`);
+    const form = document.getElementById(`form-${lenderId}`);
+    const principalInput = form.querySelector(`#${lenderId}-principal`);
+    const rateInput = form.querySelector(`#${lenderId}-rate`);
+    const monthsInput = form.querySelector(`#${lenderId}-months`);
 
-    principalInput.addEventListener('input', (e) => {
-        document.getElementById(`${lenderId}-principalValue`).textContent = formatNumber(e.target.value) + '円';
+    // クイック金額ボタン
+    form.querySelectorAll('.quick-btn[data-amount]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            principalInput.value = btn.dataset.amount;
+        });
     });
 
-    rateInput.addEventListener('input', (e) => {
-        document.getElementById(`${lenderId}-rateValue`).textContent = parseFloat(e.target.value).toFixed(1) + '%';
-    });
-
-    monthsInput.addEventListener('input', (e) => {
-        document.getElementById(`${lenderId}-monthsValue`).textContent = e.target.value + 'ヶ月';
+    // クイック期間ボタン
+    form.querySelectorAll('.quick-btn[data-months]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            monthsInput.value = btn.dataset.months;
+        });
     });
 }
 

@@ -125,12 +125,10 @@
 }
 
 .form-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     font-weight: 700;
     color: var(--color-text);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     font-size: 15px;
 }
 
@@ -141,54 +139,78 @@
     font-size: 17px;
 }
 
-/* Range Slider */
-.form-range {
-    width: 100%;
-    height: 8px;
-    border-radius: var(--radius-sm);
-    background: var(--color-border);
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.form-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.form-range::-webkit-slider-thumb:hover {
-    background: var(--color-hover);
-    transform: scale(1.1);
-}
-
-.form-range::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    cursor: pointer;
-    border: none;
-    transition: var(--transition);
-}
-
-.form-range::-moz-range-thumb:hover {
-    background: var(--color-hover);
-    transform: scale(1.1);
-}
-
-.range-labels {
+/* Input with Unit */
+.input-with-unit {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    margin-top: var(--spacing-xs);
-    font-size: var(--fs-note);
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    padding-right: 50px;
+    font-size: 16px;
+    font-family: var(--font-number);
+    font-weight: 600;
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-white);
+    transition: var(--transition);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.form-input::-webkit-outer-spin-button,
+.form-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+}
+
+.input-unit {
+    position: absolute;
+    right: var(--spacing-md);
+    font-size: 14px;
+    font-weight: 600;
     color: var(--color-secondary);
+    pointer-events: none;
+}
+
+/* Quick Amount Buttons */
+.quick-amounts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xs);
+}
+
+.quick-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.quick-btn:active {
+    transform: scale(0.95);
 }
 
 /* Radio Group */
